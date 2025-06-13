@@ -57,21 +57,21 @@ async function fetchHomeData() {
     images: [
       {
         id: 1,
-        src: "/placeholder.svg?height=400&width=600",
+        src: "https://images.unsplash.com/photo-1746748694015-036d4dd23c13?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyMHx8fGVufDB8fHx8fA%3D%3D",
         alt: "Placeholder Image 1",
         width: 600,
         height: 400,
       },
       {
         id: 2,
-        src: "/placeholder.svg?height=400&width=600",
+        src: "https://images.unsplash.com/photo-1749243277337-3f955d06cc64?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyNXx8fGVufDB8fHx8fA%3D%3D",
         alt: "Placeholder Image 2",
         width: 600,
         height: 400,
       },
       {
         id: 3,
-        src: "/placeholder.svg?height=400&width=600",
+        src: "https://plus.unsplash.com/premium_photo-1749666992791-53362d6dc507?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyNHx8fGVufDB8fHx8fA%3D%3D",
         alt: "Placeholder Image 3",
         width: 600,
         height: 400,
