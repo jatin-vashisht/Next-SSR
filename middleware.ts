@@ -6,9 +6,13 @@ export function middleware(request: NextRequest) {
   // Add cache control headers for better performance
   const response = NextResponse.next()
 
-  // Example of setting cache headers
-  // Adjust these values based on your specific caching needs
-  response.headers.set("Cache-Control", "public, max-age=60, s-maxage=60, stale-while-revalidate=300")
+  // Set stronger cache headers
+  response.headers.set("Cache-Control", "public, max-age=300, s-maxage=300, stale-while-revalidate=600")
+
+  // Add security headers
+  response.headers.set("X-Content-Type-Options", "nosniff")
+  response.headers.set("X-Frame-Options", "DENY")
+  response.headers.set("X-XSS-Protection", "1; mode=block")
 
   return response
 }

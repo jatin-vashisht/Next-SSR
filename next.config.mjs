@@ -1,9 +1,24 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Set output mode for Cloudflare Pages compatibility
+  output: 'standalone',
+  
   // Enable image optimization
   images: {
-    domains: ['commondatastorage.googleapis.com'],
-    unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'primathon-ssr.b-cdn.net',
+        port: '',
+        pathname: '/**',
+      },
+    ],
+    // For Cloudflare Pages, we need to set unoptimized to true
+    unoptimized: true, // Required for Cloudflare Pages
+    // Add local image formats preference
+    formats: ['image/webp', 'image/avif'],
+    // Minimize image size by setting quality
+    minimumCacheTTL: 60,
   },
 
   eslint: {
@@ -19,6 +34,10 @@ const nextConfig = {
     serverActions: {
       bodySizeLimit: '2mb',
     },
+    // Optimize JavaScript output
+    optimizePackageImports: ['lucide-react'],
+    // Add Cloudflare compatibility
+    runtime: 'nodejs',
   },
   
   // Configure headers for caching
@@ -52,6 +71,13 @@ const nextConfig = {
         ],
       },
     ];
+  },
+
+  // Remove swcMinify as it's causing warnings with Cloudflare
+  // swcMinify: true,
+  
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
   },
 };
 

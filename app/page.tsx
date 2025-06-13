@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic"
+
 import { Suspense } from "react"
 import ImageGallery from "@/components/image-gallery"
 import VideoPlayer from "@/components/video-player"
@@ -39,7 +41,7 @@ export default async function Home() {
       <section>
         <h2 className="text-2xl font-semibold mb-4">Featured Video</h2>
         <VideoPlayer
-          src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+          src="http://primathon-ssr.b-cdn.net/BigBuckBunny.mp4"
           poster="/placeholder.svg?height=720&width=1280"
           title="Big Buck Bunny"
         />
@@ -57,21 +59,21 @@ async function fetchHomeData() {
     images: [
       {
         id: 1,
-        src: "https://images.unsplash.com/photo-1746748694015-036d4dd23c13?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyMHx8fGVufDB8fHx8fA%3D%3D",
+        src: "http://primathon-ssr.b-cdn.net/1.avif",
         alt: "Placeholder Image 1",
         width: 600,
         height: 400,
       },
       {
         id: 2,
-        src: "https://images.unsplash.com/photo-1749243277337-3f955d06cc64?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyNXx8fGVufDB8fHx8fA%3D%3D",
+        src: "http://primathon-ssr.b-cdn.net/2.avif",
         alt: "Placeholder Image 2",
         width: 600,
         height: 400,
       },
       {
         id: 3,
-        src: "https://plus.unsplash.com/premium_photo-1749666992791-53362d6dc507?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyNHx8fGVufDB8fHx8fA%3D%3D",
+        src: "http://primathon-ssr.b-cdn.net/3.avif",
         alt: "Placeholder Image 3",
         width: 600,
         height: 400,

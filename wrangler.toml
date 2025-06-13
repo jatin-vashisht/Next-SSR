@@ -1,0 +1,18 @@
+name = "nextjs-ssr-demo"
+compatibility_date = "2023-06-28"
+compatibility_flags = ["nodejs_compat"]
+
+# For Pages deployment
+pages_build_output_dir = ".next/static"
+
+# For Workers deployment
+main = ".next/server/app/index.js"
+
+[build]
+command = "npm run build"
+
+[site]
+bucket = ".next"
+
+[env.production]
+workers_dev = true

@@ -1,6 +1,8 @@
 import { Suspense } from "react"
 import ImageGallery from "@/components/image-gallery"
 
+export const dynamic = "force-dynamic"
+
 // This is a Server Component by default in the App Router
 export default async function About() {
   // Simulate fetching data from an API with a delay to demonstrate SSR
@@ -62,7 +64,7 @@ export default async function About() {
   )
 }
 
-// Simulate fetching data
+// Update the fetchAboutData function to use local images
 async function fetchAboutData() {
   // Artificial delay to simulate API call
   await new Promise((resolve) => setTimeout(resolve, 500))
@@ -71,21 +73,21 @@ async function fetchAboutData() {
     teamImages: [
       {
         id: 1,
-        src: "/placeholder.svg?height=400&width=400",
+        src: "/placeholder.svg?height=400&width=400&text=Team+1",
         alt: "Team Member 1",
         width: 400,
         height: 400,
       },
       {
         id: 2,
-        src: "/placeholder.svg?height=400&width=400",
+        src: "/placeholder.svg?height=400&width=400&text=Team+2",
         alt: "Team Member 2",
         width: 400,
         height: 400,
       },
       {
         id: 3,
-        src: "/placeholder.svg?height=400&width=400",
+        src: "/placeholder.svg?height=400&width=400&text=Team+3",
         alt: "Team Member 3",
         width: 400,
         height: 400,

@@ -11,7 +11,37 @@ interface BlogPost {
   readTime: string
 }
 
-// This is a Server Component by default in the App Router
+// Update the BlogPostCard function to optimize image loading
+function BlogPostCard({ post, isFirst }: { post: BlogPost; isFirst?: boolean }) {
+  return (
+    <div className="bg-white rounded-lg shadow-md overflow-hidden">
+      <div className="relative h-48">
+        <Image
+          src={post.image || "/placeholder.svg"}
+          alt={post.title}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          priority={isFirst}
+          loading={isFirst ? "eager" : "lazy"}
+        />
+      </div>
+      <div className="p-6">
+        <div className="flex justify-between text-sm text-gray-500 mb-2">
+          <span>{post.date}</span>
+          <span>{post.readTime}</span>
+        </div>
+        <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
+        <p className="text-gray-600 mb-4">{post.excerpt}</p>
+        <Link href={`/blog/${post.id}`} className="text-blue-600 hover:text-blue-800 font-medium">
+          Read more →
+        </Link>
+      </div>
+    </div>
+  )
+}
+
+// Update the Blog component to pass isFirst prop
 export default async function Blog() {
   // Simulate fetching data from an API with a delay to demonstrate SSR
   const posts = await fetchBlogPosts()
@@ -26,32 +56,11 @@ export default async function Blog() {
 
       <Suspense fallback={<div>Loading blog posts...</div>}>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {posts.map((post) => (
-            <BlogPostCard key={post.id} post={post} />
+          {posts.map((post, index) => (
+            <BlogPostCard key={post.id} post={post} isFirst={index === 0} />
           ))}
         </div>
       </Suspense>
-    </div>
-  )
-}
-
-function BlogPostCard({ post }: { post: BlogPost }) {
-  return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden">
-      <div className="relative h-48">
-        <Image src={post.image || "/placeholder.svg"} alt={post.title} fill className="object-cover" />
-      </div>
-      <div className="p-6">
-        <div className="flex justify-between text-sm text-gray-500 mb-2">
-          <span>{post.date}</span>
-          <span>{post.readTime}</span>
-        </div>
-        <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
-        <p className="text-gray-600 mb-4">{post.excerpt}</p>
-        <Link href={`/blog/${post.id}`} className="text-blue-600 hover:text-blue-800 font-medium">
-          Read more →
-        </Link>
-      </div>
     </div>
   )
 }
